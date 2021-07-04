@@ -56,4 +56,14 @@ class DollarsSpec extends AnyFlatSpec {
             Dollars(10/0)
         }
     }
+
+    it should "have every dollar greater then 0" in {
+        val dollars: List[Dollars] = List(Dollars(1), Dollars(100), Dollars(20))
+        //val dollars: List[Dollars] = List.empty
+        assume(dollars.nonEmpty, "dollars was empty")
+
+        dollars.foreach{ d =>
+            assert(d.amount > 0)
+        }
+    }
 }

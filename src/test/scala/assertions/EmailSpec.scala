@@ -21,8 +21,10 @@ class EmailSpec extends AnyFlatSpec {
     }
 
     it should "throw an exception when email does not contain '@' symbol" in {
-        assertThrows[IllegalArgumentException] {
-            Email("jim.com")
+        withClue("Expected exception IllegalArgumentException"){
+            assertThrows[IllegalArgumentException] {
+                Email("jim.com")
+            }
         }
     }
 
@@ -46,15 +48,5 @@ class EmailSpec extends AnyFlatSpec {
         }
         assert(exception.isInstanceOf[IllegalArgumentException])
         assert(exception.getMessage.contains("should not contain '@' symbol more than once"))
-    }
-
-    it should "have every dollar greater then 0" in {
-        val dollars: List[Dollars] = List(Dollars(1), Dollars(100), Dollars(20))
-        //val dollars: List[Dollars] = List.empty
-        assume(dollars.nonEmpty)
-
-        dollars.foreach{ d =>
-            assert(d.amount > 0)
-        }
     }
 }
