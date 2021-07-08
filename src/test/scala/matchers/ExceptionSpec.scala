@@ -12,4 +12,9 @@ class ExceptionSpec extends UnitSpec {
         val exception = the [NumberFormatException] thrownBy Currency.stringToCurrency("Two USD")
         exception.getMessage should include("Two")
     }
+
+    it should "provide a detailed description of exception should not contain" in {
+        val exception = the [NumberFormatException] thrownBy Currency.stringToCurrency("Two USD")
+        exception.getMessage should not include("Random")
+    }
 }
