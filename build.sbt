@@ -8,5 +8,6 @@ ThisBuild / organizationName := "h2"
 lazy val root = (project in file("."))
   .settings(
     name := "scala-unit-testing",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += scalaMock % Test
   )
